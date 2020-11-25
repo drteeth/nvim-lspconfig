@@ -42,6 +42,9 @@ local function make_installer()
             # fetch dependencies and compile
             mix deps.get && mix compile
 
+            # workaround https://github.com/elixir-lsp/elixir-ls/issues/413
+            MIX_ENV=test mix compile
+
             # install executable
             mix elixir_ls.release -o release
         ]=]
