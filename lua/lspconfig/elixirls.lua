@@ -40,10 +40,14 @@ local function make_installer()
             cd elixir-ls
 
             # fetch dependencies and compile
-            mix deps.get && mix compile
+            mix deps.get
 
+            echo "BUILDING TEST ENV B/C HAX"
             # workaround https://github.com/elixir-lsp/elixir-ls/issues/413
             MIX_ENV=test mix compile
+
+            echo "NOW CONTInue"
+            mix compile
 
             # install executable
             mix elixir_ls.release -o release
